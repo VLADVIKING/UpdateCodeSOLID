@@ -11,7 +11,7 @@ public class Main {
         products.put("Масло", 153);
         products.put("Колбаса", 211);
         products.put("Пирожок", 45);
-        ProductBasket productBasket = new ProductBasket(products.size());
+        Basket basket = new Basket(products.size());
 
         System.out.println("В МАГАЗИНЕ В НАЛИЧИИ");
         for (Map.Entry<String, Integer> productAndPrice : products.entrySet()) {
@@ -20,17 +20,15 @@ public class Main {
 
         System.out.println("Введите два слова: название товара и количество. Или end");
         Scanner scanner = new Scanner(System.in);
-        Purchase purchase = new Purchase();
         while (true) {
             String line = scanner.nextLine();
             if ("end".equals(line)) break;
             String[] parts = line.split(" ");
             String product = parts[0];
             int count = Integer.parseInt(parts[1]);
-            purchase.setPurchase(product, count);
-            productBasket.addProductBasket(purchase.getPurchase().title, purchase.getPurchase().count);
+            basket.addProductBasket(Purchase.getPurchase(product, count).title, Purchase.getPurchase(product, count).count);
         }
-        long sum = productBasket.sum(products);
+        long sum = basket.sum(products);
         System.out.println("ИТОГО: " + sum);
     }
 }
