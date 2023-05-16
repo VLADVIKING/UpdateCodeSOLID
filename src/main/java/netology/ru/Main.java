@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         HashMap<String, Integer> products = new HashMap<>();
         products.put("Хлеб", 56);
         products.put("Масло", 153);
@@ -26,7 +27,7 @@ public class Main {
             String[] parts = line.split(" ");
             String product = parts[0];
             int count = Integer.parseInt(parts[1]);
-            basket.addProductBasket(Purchase.getPurchase(product, count).title, Purchase.getPurchase(product, count).count);
+            basket.addProductBasket(product, count);
         }
         long sum = basket.sum(products);
         System.out.println("ИТОГО: " + sum);

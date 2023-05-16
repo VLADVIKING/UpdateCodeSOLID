@@ -8,8 +8,4 @@ public class Purchase {
         this.title = title;
         this.count = count;
     }
-
-    public static Purchase getPurchase(String product, int value) {
-        return new Purchase(product, value);
-    }
 }
